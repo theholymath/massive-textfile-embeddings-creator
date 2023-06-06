@@ -12,8 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Create a directory for the data
 RUN mkdir data
 
-# Copy the compressed_opinions.zip file into the container
-COPY compressed_opinions.zip .
+# Download the compressed_opinions.zip file
+RUN curl -o compressed_opinions.zip https://rc-dotest.nyc3.digitaloceanspaces.com/compressed_opinions.zip
 
 # Unzip the file into the data directory
 RUN unzip compressed_opinions.zip -d data/
