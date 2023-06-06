@@ -21,6 +21,8 @@ RUN unzip compressed_opinions.zip -d data/
 # Set the working directory to /app
 WORKDIR /app
 
-# Add your application code or configuration here
+# Copy the Python file into the container
+COPY create_embeddings_service.py .
 
-# Start your application or provide the necessary entry point command
+# Execute the Python file
+CMD ["python", "create_embeddings_service.py"]
