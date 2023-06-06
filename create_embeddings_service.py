@@ -1,20 +1,15 @@
 # Purpose: Create a service that creates embeddings for a given text
-import os
-
-#os.environ["OPENAI_API_KEY"] = ""
+# assumes all text files with extension *.txt in directory `data/`
 
 from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.llms import OpenAI
-from langchain.chains import RetrievalQA
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import DirectoryLoader
 
 # local import
-from utilities.embeddings import LocalHuggingFaceEmbeddings
+from embeddings import LocalHuggingFaceEmbeddings
 
-loader = DirectoryLoader('data/case_files/', glob="./*.txt", loader_cls=TextLoader)
+loader = DirectoryLoader('data/', glob="./*.txt", loader_cls=TextLoader)
 documents = loader.load()
 
 #splitting the text into
