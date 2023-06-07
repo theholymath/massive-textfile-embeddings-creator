@@ -5,9 +5,7 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import TextLoader
 from langchain.document_loaders import DirectoryLoader
-
-# local import
-from embeddings import LocalHuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings, SentenceTransformerEmbeddings
 
 loader = DirectoryLoader('data/', glob="./*.txt", loader_cls=TextLoader)
 documents = loader.load()
@@ -20,13 +18,15 @@ texts = text_splitter.split_documents(documents)
 # Supplying a persist_directory will store the embeddings on disk
 persist_directory = 'db'
 
-## OpenAI Embeddings COST A LOT ... use HuggingFace
-embedding = LocalHuggingFaceEmbeddings('multi-qa-mpnet-base-dot-v1')
+## normal HF embeddings
+model_name = "sentence-transformers/all-mpnet-base-v2"
+hf = HuggingFaceEmbeddings(model_name=model_name)
 
 vectordb = Chroma.from_documents(documents=texts, 
-                                 embedding=embedding,
+                                 embedding=hf,
                                  persist_directory=persist_directory)
 
 # persiste the db to disk
+print("Writing Vector DB to disk")
 vectordb.persist()
 vectordb = None
