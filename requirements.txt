@@ -1,4 +1,6 @@
 pandas
-langchain
-chromadb
+langchain 
+openai
+tiktoken
+chromadb 
 sentence-transformers
