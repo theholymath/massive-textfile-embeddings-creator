@@ -65,3 +65,9 @@ Then run the app,
 
 It should work out of the box as long as the directory is pointing to the correct DB. Also, you will need to paste in your OpenAI API Key for it to work. Otherwise it will keep telling you it doesn't have enoug context. 
 
+# To-Do
+1. Speed everything up using [`ray`]()
+2. Abstract out the `choices` referred to above.
+3. Validate `Dockerfile`,
+4. Find permanent home for supreme court vecotr DB,
+5. Add in open-source LLM so that the only cost is compute cost. 
