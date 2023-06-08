@@ -26,6 +26,8 @@ To run the programs you must
     * Create a virtual environment: `python3 -m venv .env`
     * update pip to the latest (THIS IS CRITICAL OR YOUR PACKAGES WILL NOT INSTALL CORRECTLY)
     * Install requirements `pip install -r requirements.txt`
+* Run the index creator,
+    * `python create_embeddins_service.py`
 
 
 
